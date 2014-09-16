@@ -38,6 +38,7 @@ import java.util.Arrays;
  */
 public class ViewDragHelper {
     private static final String TAG = "ViewDragHelper";
+	private static final int ANIMATION_DURATION = 1000;// 1000ms
 
     /**
      * A null/invalid pointer ID.
@@ -587,11 +588,12 @@ public class ViewDragHelper {
             return false;
         }
 
-        final int duration = computeSettleDuration(mCapturedView, dx, dy, xvel, yvel);
-        mScroller.startScroll(startLeft, startTop, dx, dy, duration);
+		// final int duration = computeSettleDuration(mCapturedView, dx, dy,
+		// xvel, yvel);
+		mScroller.startScroll(startLeft, startTop, dx, dy, ANIMATION_DURATION);
 
-        setDragState(STATE_SETTLING);
-        return true;
+		setDragState(STATE_SETTLING);
+		return true;
     }
 
     private int computeSettleDuration(View child, int dx, int dy, int xvel, int yvel) {
